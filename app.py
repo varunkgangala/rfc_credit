@@ -19,6 +19,19 @@ from sklearn.metrics import (
 from src.preprocessing import (
     preprocess_data
 )
+import os
+import subprocess
+
+if not os.path.exists("models/rf_model.pkl"):
+
+    os.makedirs(
+        "models",
+        exist_ok=True
+    )
+
+    subprocess.run(
+        ["python", "-m", "src.train_model"]
+    )
 
 from src.predict import (
     predict_risk

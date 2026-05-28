@@ -1,16 +1,16 @@
 import pandas as pd
 import joblib
 
-model = joblib.load(
-    "models/rf_model.pkl"
-)
-
-feature_columns = joblib.load(
-    "models/feature_columns.pkl"
-)
-
 
 def predict_risk(data):
+
+    model = joblib.load(
+        "models/rf_model.pkl"
+    )
+
+    feature_columns = joblib.load(
+        "models/feature_columns.pkl"
+    )
 
     df = pd.DataFrame([data])
 
