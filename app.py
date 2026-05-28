@@ -1,3 +1,5 @@
+import os
+import subprocess
 import streamlit as st
 import pandas as pd
 import joblib
@@ -16,12 +18,6 @@ from sklearn.metrics import (
     PrecisionRecallDisplay
 )
 
-from src.preprocessing import (
-    preprocess_data
-)
-import os
-import subprocess
-
 if not os.path.exists("models/rf_model.pkl"):
 
     os.makedirs(
@@ -32,6 +28,10 @@ if not os.path.exists("models/rf_model.pkl"):
     subprocess.run(
         ["python", "-m", "src.train_model"]
     )
+
+from src.preprocessing import (
+    preprocess_data
+)
 
 from src.predict import (
     predict_risk
@@ -560,3 +560,4 @@ elif page == "Prediction":
             st.success(
                 f"Low Credit Risk\n\nConfidence: {(1 - probability):.2%}"
             )
+
